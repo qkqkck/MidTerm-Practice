@@ -2,6 +2,7 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "Player.h"
+#include "vector"
 
 class Game
 {
@@ -20,8 +21,7 @@ class Game
   SDL_Window* m_pWindow;
   SDL_Renderer* m_pRenderer;
   TextureManager m_textureManager;
-  GameObject m_go;
-  Player m_player;
+  std::vector<GameObject*>m_gameObjects;
   int m_currentFrame;
   bool m_bRunning;
 };
