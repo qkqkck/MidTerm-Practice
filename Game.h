@@ -1,5 +1,7 @@
 #include "SDL.h"
 #include "TextureManager.h"
+#include "GameObject.h"
+#include "Player.h"
 
 class Game
 {
@@ -18,6 +20,8 @@ class Game
   SDL_Window* m_pWindow;
   SDL_Renderer* m_pRenderer;
   TextureManager m_textureManager;
+  GameObject m_go;
+  Player m_player;
   int m_currentFrame;
   bool m_bRunning;
 };
