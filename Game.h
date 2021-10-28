@@ -1,4 +1,5 @@
 #include "SDL.h"
+#include "TextureManager.h"
 
 class Game
 {
@@ -16,8 +17,7 @@ class Game
   private:
   SDL_Window* m_pWindow;
   SDL_Renderer* m_pRenderer;
-  SDL_Texture* m_pTexture;
-  SDL_Rect m_sourceRectangle; //원본상자
-  SDL_Rect m_destinationRectangle; //대상상자
+  TextureManager m_textureManager;
+  int m_currentFrame;
   bool m_bRunning;
 };
