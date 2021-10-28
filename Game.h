@@ -6,10 +6,17 @@
 
 class Game
 {
-  public:
-  Game() {}
-  ~Game() {}
+private:
+	Game() {}
+	static Game* s_pInstance;
 
+public:
+	static Game* Instance()
+	{
+		if (s_pInstance == 0)
+			s_pInstance = new Game();
+		return s_pInstance;
+	}
   bool init(const char* title, int xpos, int ypos, int height, int width, int flags);
   void render();
   void update();
@@ -25,3 +32,4 @@ class Game
   int m_currentFrame;
   bool m_bRunning;
 };
+typedef Game TheGame;
