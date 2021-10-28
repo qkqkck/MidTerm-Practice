@@ -18,12 +18,8 @@ bool TheGame::init(const char* title, int xpos, int ypos, int width, int height,
         {
           return false;
         }
-        GameObject* m_go = new GameObject();
-        GameObject* m_player = new Player();
-        m_go->load(100, 100, 128, 82,"animate");
-        m_player->load(300, 300, 128, 82,"animate");
-        m_gameObjects.push_back(m_go);
-        m_gameObjects.push_back(m_player);
+        m_gameObjects.push_back(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
+        m_gameObjects.push_back(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
         SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255); //배경
 
       }else
@@ -54,9 +50,9 @@ void TheGame::update()
 void TheGame::render()
 {
   SDL_RenderClear(m_pRenderer);
-  for(int i=0; i<m_gameObjects.size(); i ++)
+  for(int i=0; i<m_gameObjects.size(); i++)
   {
-    m_gameObjects[i]->draw(m_pRenderer);
+    m_gameObjects[i]->draw();
   }
   SDL_RenderPresent(m_pRenderer);
 }

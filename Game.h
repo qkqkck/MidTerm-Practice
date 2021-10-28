@@ -2,6 +2,7 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "Player.h"
+#include "Enemy.h"
 #include "vector"
 
 class Game
@@ -23,6 +24,7 @@ public:
   bool running();
   void handleEvents();
   void clean();
+  SDL_Renderer* getRenderer() { return m_pRenderer;}
 
   private:
   SDL_Window* m_pWindow;
