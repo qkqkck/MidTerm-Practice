@@ -17,7 +17,7 @@ class Game
   SDL_Window* m_pWindow;
   SDL_Renderer* m_pRenderer;
   SDL_Texture* m_pTexture;
-  SDL_Rect m_sourceRectangle;
-  SDL_Rect m_destinationRectangle;
+  SDL_Rect m_sourceRectangle; //원본상자
+  SDL_Rect m_destinationRectangle; //대상상자
   bool m_bRunning;
 };

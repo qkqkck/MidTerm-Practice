@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "SDL_image.h"
 
 SDL_Window* m_pWindow = 0;
 SDL_Renderer* m_pRenderer = 0;
@@ -15,17 +16,16 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
       if(m_pRenderer != 0)
       {
   
-        SDL_Surface* pTempSurface = SDL_LoadBMP("Assets/rider.bmp");
+        SDL_Surface* pTempSurface = IMG_Load("Assets/animate-alpha.png");
         m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
         SDL_FreeSurface(pTempSurface);
-        SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);
-        m_sourceRectangle.x = 0;
-        m_sourceRectangle.y = 0;
+        m_sourceRectangle.w = 128;
+        m_sourceRectangle.h = 82;
+        m_sourceRectangle.x = m_destinationRectangle.x;
+        m_sourceRectangle.y = m_destinationRectangle.y;
         m_destinationRectangle.w = m_sourceRectangle.w;
         m_destinationRectangle.h = m_sourceRectangle.h;
-        m_destinationRectangle.x = 0;
-        m_destinationRectangle.y = 0;
-        SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
+        SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255); //배경
 
       }else
       { 
@@ -46,7 +46,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, in
 
 void Game::update()
 {
-
+  m_sourceRectangle.x = 128 * ((SDL_GetTicks() / 100) % 6);
 }
 
 void Game::render()
