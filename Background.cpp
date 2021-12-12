@@ -15,8 +15,8 @@ void Background::update()
 		m_currentFrame = 0;
 	}
 	else {
-		m_velocity.setX(-10);	//2^4 * 103 = 1648
-		if (m_position.getX() <= myPosition - 1648) {
+		m_velocity.setX(-10);	
+		if (m_position.getX() <= myPosition - 2000) {
 			m_position.setX(myPosition);
 		}
 	}

@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "Game.h" //20171221 이민석 기말 과제
 #include <ctime>
 
 Game* g_game = 0;

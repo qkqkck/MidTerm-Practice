@@ -19,7 +19,7 @@ void PlayState::update() {	//onenter로 들어오면 sdl_geetticks로 시간 받
 		}
 		if (SDL_GetTicks() > nextTime) {		//날라오는 적들
 			nextTime = SDL_GetTicks() + TimeLeft;
-			m_gameObjects.push_back(new Enemy(new LoaderParams(-200, 0, 55, 55, "helicopter2")));
+			m_gameObjects.push_back(new Enemy(new LoaderParams(-200, 0, 55, 55, "enemy")));
 		}
 		for (int i = 0; i < m_gameObjects.size(); i++) {
 			m_gameObjects[i]->update();
@@ -72,7 +72,7 @@ bool PlayState::onEnter() {
 	if (!TheTextureManager::Instance()->load("assets/helicopter.png", "helicopter", TheGame::Instance()->getRenderer())) {
 		return false;
 	}
-	if (!TheTextureManager::Instance()->load("assets/Fire.png", "helicopter2", TheGame::Instance()->getRenderer())) {
+	if (!TheTextureManager::Instance()->load("assets/Fire.png", "enemy", TheGame::Instance()->getRenderer())) {
 		return false;
 	}
 	if (!TheTextureManager::Instance()->load("assets/heart.png", "myHeart", TheGame::Instance()->getRenderer())) {
@@ -89,8 +89,8 @@ bool PlayState::onEnter() {
 	m_heart.push_back(new Heart(new LoaderParams(1180, 36, 51, 44, "myHeart")));
 	myHeart = 4;
 
-	m_back.push_back(new Background(new LoaderParams(0, 0, 1648, 900, "stage1Back")));
-	m_back.push_back(new Background(new LoaderParams(1648, 0, 1648, 900, "stage1Back")));
+	m_back.push_back(new Background(new LoaderParams(0, 0, 2000, 900, "stage1Back")));
+	m_back.push_back(new Background(new LoaderParams(2000, 0, 1648, 900, "stage1Back")));
 	std::cout << "entering PlayState\n";
 	return true;
 
@@ -107,7 +107,7 @@ bool PlayState::onExit()
 	}
 	m_heart.clear();
 	TheTextureManager::Instance()->clearFromTextureMap("helicopter");
-	TheTextureManager::Instance()->clearFromTextureMap("helicopter2");
+	TheTextureManager::Instance()->clearFromTextureMap("enemy");
 	std::cout << "exiting PlayState\n";
 	return true;
 }
