@@ -1,14 +1,13 @@
 #pragma once
 #include"SDLGameObject.h"
-#include"InputHandler.h"
 
-class Player : public SDLGameObject
+class Background : public SDLGameObject
 {
 public:
-	Player(const LoaderParams* pParams);
+	Background(const LoaderParams* pParams);
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
+	int myPosition;
 private:
-	void handleInput();
 };

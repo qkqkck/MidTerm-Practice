@@ -1,22 +1,21 @@
 #pragma once
-#include "LoaderParams.h"
 #include "GameObject.h"
-#include "string"
+#include "Vector2D.h"
 
-class SDLGameObject : public GameObject
-{
+
+class SDLGameObject : public GameObject {
 public:
 	SDLGameObject(const LoaderParams* pParams);
 	virtual void draw();
-	virtual void update() {}
-	virtual void clean() {}
-	virtual ~SDLGameObject() {}
-
-protected:
-  int m_x;
-  int m_y;
+	virtual void update();
+	virtual void clean();
 	int m_width;
 	int m_height;
+	int m_numFrames;
+	Vector2D m_position;
+protected:
+	Vector2D m_velocity;
+	Vector2D m_acceleration;
 	int m_currentRow;
 	int m_currentFrame;
 	std::string m_textureID;
